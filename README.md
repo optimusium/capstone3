@@ -120,9 +120,3 @@ copy to facenet folder
           Y2=np.append( Y2, np.zeros(50),axis=0)
           Y3=np.append( Y3, np.zeros(50),axis=0)
 
-
-
-
-
-          
-    Step 1: 
