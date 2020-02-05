@@ -1,12 +1,18 @@
 # capstone3
 
 Training/Testing Info:
-See FaceRecognitionSequence.pptx
+    See FaceRecognitionSequence.pptx
+    Go to Google Drive and download pre-trained files if you need. 
+    https://drive.google.com/drive/folders/1TmarWjkchl-twLYs7VGzrQBYvvxtAWm-
 
 Theory:
-See Face Recognition.pptx
+    See Face Recognition.pptx
+
+
+
 
 General Info:
+
 
 Use ml1p13 env. Alternatively, use the following command to create ml1p13
 
