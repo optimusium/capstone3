@@ -52,6 +52,9 @@ def process_csv():
     X22 = loadtxt('img22_merged_representation.csv', delimiter=',')
     X23 = loadtxt('img23_merged_representation.csv', delimiter=',')
 
+    X24 = loadtxt('img24_merged_representation.csv', delimiter=',')
+    X25 = loadtxt('img25_merged_representation.csv', delimiter=',')
+
     Y0=np.append( np.ones(X0.shape[0]), np.ones(X1.shape[0]),axis=0)
     Y0=np.append( Y0, np.ones(X2.shape[0]),axis=0)
     Y0=np.append( Y0, np.ones(X3.shape[0]),axis=0)
@@ -76,6 +79,9 @@ def process_csv():
     Y0=np.append( Y0, np.zeros(50),axis=0)
     Y0=np.append( Y0, np.zeros(50),axis=0)
     Y0=np.append( Y0, np.zeros(50),axis=0)
+
+    Y0=np.append( Y0, np.ones(X24.shape[0]),axis=0)
+    Y0=np.append( Y0, np.ones(X25.shape[0]),axis=0)
     
     
     Y1=np.append( np.zeros(X0.shape[0]),  np.zeros(X1.shape[0]),axis=0)
@@ -102,6 +108,9 @@ def process_csv():
     Y1=np.append( Y1, np.zeros(50),axis=0)
     Y1=np.append( Y1, np.zeros(50),axis=0)
     Y1=np.append( Y1, np.zeros(50),axis=0)
+
+    Y1=np.append( Y1, np.zeros(X24.shape[0]),axis=0)
+    Y1=np.append( Y1, np.zeros(X25.shape[0]),axis=0)
 
     
     Y2=np.append( np.zeros(X0.shape[0]), np.zeros(X1.shape[0]),axis=0)
@@ -130,6 +139,8 @@ def process_csv():
     Y2=np.append( Y2, np.zeros(50),axis=0)
     Y2=np.append( Y2, np.zeros(50),axis=0)
 
+    Y2=np.append( Y2, np.zeros(X24.shape[0]),axis=0)
+    Y2=np.append( Y2, np.zeros(X25.shape[0]),axis=0)
     
     Y3=np.append( np.zeros(X0.shape[0]), np.zeros(X1.shape[0]),axis=0)
     Y3=np.append( Y3, np.zeros(X2.shape[0]),axis=0)
@@ -156,6 +167,9 @@ def process_csv():
     Y3=np.append( Y3, np.zeros(50),axis=0)
     Y3=np.append( Y3, np.zeros(50),axis=0)
     Y3=np.append( Y3, np.zeros(50),axis=0)
+
+    Y3=np.append( Y3, np.zeros(X24.shape[0]),axis=0)
+    Y3=np.append( Y3, np.zeros(X25.shape[0]),axis=0)
 
 
     X=X0
@@ -188,6 +202,8 @@ def process_csv():
         X=np.append(X,X22[i:i+10],axis=0)
         X=np.append(X,X23[i:i+10],axis=0)
         
+    X=np.append(X,X24,axis=0)
+    X=np.append(X,X25,axis=0)
         
     X_train,X_test,Y_train0,Y_test0,Y_train1,Y_test1,Y_train2,Y_test2,Y_train3,Y_test3 = train_test_split(X,Y0,Y1,Y2,Y3,test_size = 0.1)
     return X_train,X_test,Y_train0,Y_test0,Y_train1,Y_test1,Y_train2,Y_test2,Y_train3,Y_test3

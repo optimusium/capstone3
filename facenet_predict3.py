@@ -87,8 +87,9 @@ def adjust_gamma(image, gamma=1.0):
 
 
 detector = MTCNN()
-images = ['frame1.jpg','frame2.jpg','frame3.jpg','frame4.jpg','frame5.jpg','frame6.jpg','frame7.jpg','frame8.jpg','frame9.jpg','frame10.jpg','frame11.jpg','frame12.jpg','frame13.jpg','frame14.jpg','frame15.jpg','frame16.jpg','frame17.jpg','frame18.jpg','frame19.jpg','frame20.jpg','frame21.jpg','frame22.jpg','frame23.jpg','frame24.jpg']
+images = ['frame1.jpg','frame2.jpg','frame3.jpg','frame4.jpg','frame5.jpg','frame6.jpg','frame7.jpg','frame8.jpg','frame9.jpg','frame10.jpg','frame11.jpg','frame12.jpg','frame13.jpg','frame14.jpg','frame15.jpg','frame16.jpg','frame17.jpg','frame18.jpg','frame19.jpg','frame20.jpg','frame21.jpg','frame22.jpg','frame23.jpg','frame24.jpg','frame25.jpg','frame26.jpg']
 #images = ['frame1.jpg','frame2.jpg','frame3.jpg','frame4.jpg','frame5.jpg','frame6.jpg','frame7.jpg','frame8.jpg','frame9.jpg','frame10.jpg']
+#images = ['frame25.jpg','frame26.jpg']
 path=".\\img\\"
 
 model = load_model('facenet/facenet_keras.h5')
@@ -109,7 +110,7 @@ model.load_weights("facenet/facenet_keras_weights.h5")
 imags=[]
 
 jjjj=-1
-jjj=-1
+jjj=-1 #offset if adding image
 for img in images: #def preprocess_image(img):
     jjjj+=1
     if jjjj%6==0:
