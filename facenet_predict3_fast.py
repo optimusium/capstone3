@@ -87,9 +87,14 @@ def adjust_gamma(image, gamma=1.0):
 
 
 detector = MTCNN()
-images = ['frame1.jpg','frame2.jpg','frame3.jpg','frame4.jpg','frame5.jpg','frame6.jpg','frame7.jpg','frame8.jpg','frame9.jpg','frame10.jpg','frame11.jpg','frame12.jpg','frame13.jpg','frame14.jpg','frame15.jpg','frame16.jpg','frame17.jpg','frame18.jpg','frame19.jpg','frame20.jpg','frame21.jpg','frame22.jpg','frame23.jpg','frame24.jpg','frame25.jpg','frame26.jpg']
+#images = ['frame1.jpg','frame2.jpg','frame3.jpg','frame4.jpg','frame5.jpg','frame6.jpg','frame7.jpg','frame8.jpg','frame9.jpg','frame10.jpg','frame11.jpg','frame12.jpg','frame13.jpg','frame14.jpg','frame15.jpg','frame16.jpg','frame17.jpg','frame18.jpg','frame19.jpg','frame20.jpg','frame21.jpg','frame22.jpg','frame23.jpg','frame24.jpg','frame25.jpg','frame26.jpg']
 #images = ['frame1.jpg','frame2.jpg','frame3.jpg','frame4.jpg','frame5.jpg','frame6.jpg','frame7.jpg','frame8.jpg','frame9.jpg','frame10.jpg']
 #images = ['frame25.jpg','frame26.jpg']
+#images = ['frame27.jpg']
+#images = ['frame1.jpg','frame2.jpg','frame3.jpg','frame4.jpg','frame5.jpg']
+#images = ['frame6.jpg','frame7.jpg','frame8.jpg','frame9.jpg','frame10.jpg']
+images = ['frame11.jpg','frame12.jpg','frame13.jpg','frame14.jpg','frame15.jpg','frame16.jpg','frame17.jpg','frame18.jpg','frame19.jpg','frame20.jpg','frame21.jpg','frame22.jpg','frame23.jpg','frame24.jpg','frame25.jpg','frame26.jpg']
+
 path=".\\img\\"
 
 model = load_model('facenet/facenet_keras.h5')
@@ -253,7 +258,7 @@ for img in images: #def preprocess_image(img):
 #raise
     
     
-os.popen("del *merged_representation*")    
+os.popen("del *merged_representation_fast*")    
     
 jjj=-1
 jjjj=-1
@@ -554,13 +559,17 @@ for imag in imags: #def preprocess_image(img):
             for ang in [-45,-38,-30,-20,-10,0,10, 20,30,38,45]:
                 img = ndimage.rotate(res6, ang, mode='nearest')
                 #print(img.shape)
+                grayplt(img/255)
                 trim1=(img.shape[0]-160)/(2)
                 trim1=int(trim1)
                 trim2=(img.shape[1]-160)/(2)
                 trim2=int(trim2)
                 res1=img[trim1:trim1+160,trim2:trim2+160]
-                training=np.append(training,res1)    
-    
+                training=np.append(training,res1)  
+                grayplt(res1/255)
+                #raise
+                
+                
                 shi=20 #int( 30-(sc-80)/2 )
                 for sh in [-20,-10,0,10,20]: #range(-shi,shi,10):
                     for sh2 in [-20,-10,0,10,20]: #range(-shi,shi,10):
@@ -580,13 +589,15 @@ for imag in imags: #def preprocess_image(img):
                         
                         training=np.append(training,res9)
                 #raise
-                        
+                
+                
+                       
             print("shape:",training.shape)
             training=training.reshape( int(training.shape[0]/76800),160,160,3)
             
             img1_representation = model.predict(training)
             #savetxt('img%i_representation_%s_%s.csv' % (jjj,iii,sc), img1_representation, delimiter=',')
-            with open('img%i_merged_representation.csv' % (jjj), "ab") as f:
+            with open('img%i_merged_representation_fast.csv' % (jjj), "ab") as f:
                 savetxt(f, img1_representation, delimiter=',')
             
             training=np.array([])
@@ -614,8 +625,9 @@ for imag in imags: #def preprocess_image(img):
                 trim2=(img.shape[1]-160)/(2)
                 trim2=int(trim2)
                 res2=img[trim1:trim1+160,trim2:trim2+160]
-                training=np.append(training,res2)    
-    
+                training=np.append(training,res2) 
+                #grayplt(res2/255)
+                
                 if ang<-15: continue
                 if ang>15: continue
                 shi=30 #int( 30-(sc-80)/2 )
@@ -635,13 +647,15 @@ for imag in imags: #def preprocess_image(img):
                         training=np.append(training,res9)
                         print(sh,sh2)
                         grayplt(res9/255)
+
+                
     
             print("shape:",training.shape)
             training=training.reshape( int(training.shape[0]/76800),160,160,3)
             
             img1_representation = model.predict(training)
             #savetxt('img%i_representation_%s_%s.csv' % (jjj,iii,sc), img1_representation, delimiter=',')
-            with open('img%i_merged_representation.csv' % (jjj), "ab") as ff:
+            with open('img%i_merged_representation_fast.csv' % (jjj), "ab") as ff:
                 savetxt(ff, img1_representation, delimiter=',')
             
             training=np.array([])
