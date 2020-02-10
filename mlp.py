@@ -139,7 +139,7 @@ X_train,X_test,Y_train0,Y_test0,Y_train1,Y_test1,Y_train2,Y_test2,Y_train3,Y_tes
 
 print("MLP0")
 #MLP = RandomForestClassifier(n_jobs=200,max_depth=None, max_leaf_nodes=5, random_state=0)
-MLP=MLPClassifier(solver='lbfgs', alpha=1e-5,hidden_layer_sizes=(15,), random_state=1) #LogisticRegression(random_state=0, C=1.0)
+MLP=MLPClassifier(solver='lbfgs', alpha=5e-5,hidden_layer_sizes=(120,), random_state=1) #LogisticRegression(random_state=0, C=1.0)
 MLP.fit(X_train,Y_train0)
 filename="MLP0.sav"
 pickle.dump(MLP,open(filename,'wb'))
@@ -149,7 +149,7 @@ CM=confusion_matrix(Y_test0,prediction)
 print(CM)
 
 print("MLP1")
-MLP1=MLPClassifier(solver='lbfgs', alpha=1e-5,hidden_layer_sizes=(15,), random_state=1) #LogisticRegression(random_state=0, C=1.0)
+MLP1=MLPClassifier(solver='lbfgs', alpha=3e-5,hidden_layer_sizes=(75,), random_state=1) #LogisticRegression(random_state=0, C=1.0)
 #MLP1 = RandomForestClassifier(n_jobs=200,max_depth=None, max_leaf_nodes=5, random_state=5)
 MLP1.fit(X_train,Y_train1)
 filename="MLP1.sav"
@@ -161,7 +161,7 @@ print(CM)
 
 print("MLP2")
 #MLP2 = RandomForestClassifier(n_jobs=200,max_depth=None, max_leaf_nodes=5, random_state=5)
-MLP2=MLPClassifier(solver='lbfgs', alpha=1e-5,hidden_layer_sizes=(15,), random_state=1) #LogisticRegression(random_state=0, C=1.0)
+MLP2=MLPClassifier(solver='lbfgs', alpha=1e-5,hidden_layer_sizes=(30,), random_state=1) #LogisticRegression(random_state=0, C=1.0)
 MLP2.fit(X_train,Y_train2)
 filename="MLP2.sav"
 pickle.dump(MLP2,open(filename,'wb'))
@@ -172,7 +172,7 @@ print(CM)
 
 print("MLP3")
 #
-MLP3=MLPClassifier(solver='lbfgs', alpha=1e-5,hidden_layer_sizes=(15,), random_state=1) #LogisticRegression(random_state=0, C=1.0)
+MLP3=MLPClassifier(solver='lbfgs', alpha=1e-5,hidden_layer_sizes=(30,), random_state=1) #LogisticRegression(random_state=0, C=1.0)
 #MLP3 = RandomForestClassifier(n_jobs=200,max_depth=None, max_leaf_nodes=5, random_state=5)
 MLP3.fit(X_train,Y_train3)
 filename="MLP3.sav"

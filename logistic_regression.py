@@ -139,7 +139,7 @@ X_train,X_test,Y_train0,Y_test0,Y_train1,Y_test1,Y_train2,Y_test2,Y_train3,Y_tes
 
 print("LR0")
 #LR = RandomForestClassifier(n_jobs=200,max_depth=None, max_leaf_nodes=5, random_state=0)
-LR=LogisticRegression(random_state=0, C=1.1)
+LR=LogisticRegression(random_state=0, C=500)
 LR.fit(X_train,Y_train0)
 filename="LR0.sav"
 pickle.dump(LR,open(filename,'wb'))
@@ -149,7 +149,7 @@ CM=confusion_matrix(Y_test0,prediction)
 print(CM)
 
 print("LR1")
-LR1=LogisticRegression(random_state=0, C=1.1)
+LR1=LogisticRegression(random_state=0, C=100)
 #LR1 = RandomForestClassifier(n_jobs=200,max_depth=None, max_leaf_nodes=5, random_state=5)
 LR1.fit(X_train,Y_train1)
 filename="LR1.sav"
@@ -161,7 +161,7 @@ print(CM)
 
 print("LR2")
 #LR2 = RandomForestClassifier(n_jobs=200,max_depth=None, max_leaf_nodes=5, random_state=5)
-LR2=LogisticRegression(random_state=0, C=1.1)
+LR2=LogisticRegression(random_state=0, C=50)
 LR2.fit(X_train,Y_train2)
 filename="LR2.sav"
 pickle.dump(LR2,open(filename,'wb'))
@@ -172,7 +172,7 @@ print(CM)
 
 print("LR3")
 #
-LR3=LogisticRegression(random_state=0, C=2.1)
+LR3=LogisticRegression(random_state=0, C=50)
 #LR3 = RandomForestClassifier(n_jobs=200,max_depth=None, max_leaf_nodes=5, random_state=5)
 LR3.fit(X_train,Y_train3)
 filename="LR3.sav"
